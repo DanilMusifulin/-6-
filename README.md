@@ -85,9 +85,10 @@ Term_paper_on_mobile_robotics/
 🚀 Пошаговое развертывание и запуск
 Клонируйте репозиторий в рабочую папку:
 
-Bash
+```Bash
 cd ~
 mkdir -p projects
 cd projects
-git clone [https://github.com/ВАШ_НИКНЕЙМ/Term_paper_on_mobile_robotics.git](https://github.com/DanilMusifulin/Term_paper_on_mobile_robotics.git)
+git clone [https://github.com/DanilMusifulin/Term_paper_on_mobile_robotics.git](https://github.com/DanilMusifulin/Term_paper_on_mobile_robotics.git)
 cd Term_paper_on_mobile_robotics
+```
