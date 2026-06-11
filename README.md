@@ -44,3 +44,50 @@ pip3 install numpy pyyaml opencv-contrib-python
 ```bash
 sudo chmod 666 /dev/video*
 ```
+
+Вариант Б: WSL2 (Ubuntu 22.04 внутри Windows)
+Поскольку WSL2 изолирован, необходимо пробросить USB-камеру из хост-системы Windows с помощью утилиты usbipd-win версии 5.x+.
+
+В Windows: Скачайте и установите последнюю версию usbipd-win.
+
+В Windows (PowerShell от Администратора):
+
+Сначала откройте ваш терминал Ubuntu (чтобы запустить подсистему WSL2 в фоне).
+
+Проверьте список подключенных USB-устройств:
+
+```PowerShell
+usbipd list
+```
+Найдите в списке вашу веб-камеру (Logitech, Inc. Webcam C270) и запомните её BUSID (например, 2-2).
+
+Привяжите и пробросьте устройство в WSL:
+
+```PowerShell
+usbipd attach --wsl --busid 2-2
+```
+(Оставьте это окно PowerShell открытым на время работы проекта).
+
+В терминале WSL2 (Ubuntu): Предоставьте права доступа к созданному виртуальному файлу видеопотока:
+
+```Bash
+sudo chmod 666 /dev/video*
+```
+
+📂 Структура проекта
+Plaintext
+Term_paper_on_mobile_robotics/
+├── calibrate.py             # Скрипт сбора кадров и вычисления калибровки линзы
+├── test_cam.py              # Проверка стабильности потока и вывода ID маркеров
+├── localize_test.py         # Локальный прототип расчета 3D-координат на Python
+├── aruco_locator_node.py    # Финальная ROS 2 нода локализации робота
+└── calibration.yaml         # Результат калибровки (матрица камеры и дисторсия)
+🚀 Пошаговое развертывание и запуск
+Клонируйте репозиторий в рабочую папку:
+
+Bash
+cd ~
+mkdir -p projects
+cd projects
+git clone [https://github.com/ВАШ_НИКНЕЙМ/Term_paper_on_mobile_robotics.git](https://github.com/DanilMusifulin/Term_paper_on_mobile_robotics.git)
+cd Term_paper_on_mobile_robotics
